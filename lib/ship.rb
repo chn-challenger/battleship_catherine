@@ -9,9 +9,19 @@ class Ship
 			size.times do 
 				@body_parts << { coords: [] , hit: false}
 			end
-		
+		@sunk = false
 	end 
 
+	def sunk
+		@body_parts.each do |part|
+			if part[:hit] == false
+				@sunk = false
+				return @sunk
+			end 
+		end
+		@sunk = true
+		return @sunk 
+  end 
 end
 
 # p Ship.new(5)
